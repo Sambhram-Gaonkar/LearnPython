@@ -3,8 +3,10 @@ import { redirect } from "next/navigation";
 import { ArrowRight, BookOpen, CheckCircle2, Gauge } from "lucide-react";
 import { RoadmapCard } from "@/components/RoadmapCard";
 import { ProgressBar } from "@/components/ProgressBar";
+import { SpecialUserExperience } from "@/components/SpecialUserExperience";
 import { createServerSupabaseClient } from "@/lib/supabaseServer";
 import { calculateProgress, getNextExercise, summarizeDays, type DayWithExercises } from "@/lib/roadmap";
+import { getSpecialUserConfig } from "@/lib/specialUser";
 
 export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient();
@@ -31,9 +33,11 @@ export default async function DashboardPage() {
   const totals = calculateProgress(roadmapDays, progressRows);
   const next = getNextExercise(roadmapDays, progressRows);
   const displayName = user.user_metadata.full_name ?? user.email ?? "Python learner";
+  const specialUserConfig = getSpecialUserConfig(user.email);
 
   return (
     <div className="mx-auto max-w-7xl">
+      <SpecialUserExperience config={specialUserConfig} progressPercent={totals.progressPercent} />
       <section className="rounded-lg border border-ink/10 bg-white p-6 shadow-sm" id="progress">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-center">
           <div>

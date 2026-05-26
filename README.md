@@ -40,9 +40,20 @@ Create `.env.local`:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SPECIAL_USER_EMAIL=target_user_email@example.com
+SPECIAL_WELCOME_IMAGE=/special/welcome.png
+SPECIAL_CERTIFICATE_IMAGE=/special/certificate.png
+SPECIAL_CHATBOT_MESSAGES=Thale nindh|Moka Taka Odka|Keep practicing|Finish today's task
 ```
 
 The same variables must be added in Vercel during deployment.
+
+Optional special-user experience:
+
+- `SPECIAL_USER_EMAIL` controls which logged-in user sees the custom popup, certificate modal, confetti, and chatbot.
+- Put your welcome image at `public/special/welcome.png`.
+- Put your certificate image at `public/special/certificate.png`.
+- Use `SPECIAL_CHATBOT_MESSAGES` with replies separated by `|`.
 
 ## 4. Run Locally
 
