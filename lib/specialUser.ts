@@ -6,8 +6,14 @@ export type SpecialUserConfig = {
   completionTitle: string;
   completionMessage: string;
   certificateImage: string;
-  chatbotMessages: string[];
 };
+
+export function getChatbotMessages() {
+  return (process.env.SPECIAL_CHATBOT_MESSAGES || "Thale nindh|Moka Taka Hog Haaa..|Kapada Shili")
+    .split("|")
+    .map((message) => message.trim())
+    .filter(Boolean);
+}
 
 export function getSpecialUserConfig(userEmail?: string | null): SpecialUserConfig {
   const targetEmail = process.env.SPECIAL_USER_EMAIL?.trim().toLowerCase();
@@ -24,10 +30,6 @@ export function getSpecialUserConfig(userEmail?: string | null): SpecialUserConf
     completionMessage:
       process.env.SPECIAL_COMPLETION_MESSAGE ||
       "You completed the Python Learning Roadmap. Your certificate is ready.",
-    certificateImage: process.env.SPECIAL_CERTIFICATE_IMAGE || "/special/certificate.png",
-    chatbotMessages: (process.env.SPECIAL_CHATBOT_MESSAGES || "Thale nindh|Moka Taka Odka|Keep practicing|Finish today's task")
-      .split("|")
-      .map((message) => message.trim())
-      .filter(Boolean)
+    certificateImage: process.env.SPECIAL_CERTIFICATE_IMAGE || "/special/certificate.png"
   };
 }
