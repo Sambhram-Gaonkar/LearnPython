@@ -134,3 +134,7 @@ with check (auth.uid() = user_id);
 create index if not exists exercises_day_id_idx on public.exercises(day_id);
 create index if not exists user_progress_user_id_idx on public.user_progress(user_id);
 create index if not exists user_progress_day_id_idx on public.user_progress(day_id);
+
+update public.exercises
+set starter_code = replace(starter_code, '\n', chr(10))
+where starter_code like '%\n%';

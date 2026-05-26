@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, Clock } from "lucide-react";
 import { ExerciseCard } from "@/components/ExerciseCard";
 import { ProgressBar } from "@/components/ProgressBar";
+import { getLesson } from "@/lib/lessons";
 import { createServerSupabaseClient } from "@/lib/supabaseServer";
 import type { DayWithExercises } from "@/lib/roadmap";
 
@@ -31,6 +32,7 @@ export default async function DayDetailPage({ params }: { params: Promise<{ id: 
   }
 
   const currentDay = day as DayWithExercises;
+  const lesson = getLesson(currentDay);
   const completedIds = new Set((progress ?? []).filter((item) => item.is_completed).map((item) => item.exercise_id));
   const percent = currentDay.exercises.length === 0 ? 0 : Math.round((completedIds.size / currentDay.exercises.length) * 100);
 
@@ -68,6 +70,30 @@ export default async function DayDetailPage({ params }: { params: Promise<{ id: 
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="mt-6 rounded-lg border border-ink/10 bg-white p-6 shadow-sm">
+        <h2 className="text-xl font-bold text-ink">Lesson</h2>
+        <p className="mt-3 leading-7 text-ink/70">{lesson.intro}</p>
+        <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_1fr]">
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-normal text-ink/60">Key points</h3>
+            <ul className="mt-3 grid gap-2">
+              {lesson.keyPoints.map((point) => (
+                <li key={point} className="rounded-md bg-paper px-4 py-3 text-sm leading-6 text-ink/75">
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-normal text-ink/60">Example</h3>
+            <pre className="mt-3 overflow-x-auto rounded-lg bg-ink p-4 text-sm leading-6 text-white">{lesson.example}</pre>
+          </div>
+        </div>
+        <p className="mt-5 rounded-md border border-mint/20 bg-mint/10 px-4 py-3 text-sm leading-6 text-mint">
+          {lesson.practiceNote}
+        </p>
       </section>
 
       <section className="mt-6">

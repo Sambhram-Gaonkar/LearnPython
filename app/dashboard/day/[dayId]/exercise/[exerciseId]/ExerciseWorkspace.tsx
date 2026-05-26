@@ -4,6 +4,7 @@ import { useMemo, useState, useTransition } from "react";
 import { CheckCircle2, Lightbulb, Loader2, Play, RotateCcw, Save } from "lucide-react";
 import { CodeEditor } from "@/components/CodeEditor";
 import { OutputPanel } from "@/components/OutputPanel";
+import { normalizeCode } from "@/lib/code";
 import { createClient } from "@/lib/supabaseClient";
 import { runPython } from "@/lib/pyodideRunner";
 import type { Exercise, UserProgress } from "@/types/database";
@@ -17,8 +18,8 @@ type ExerciseWorkspaceProps = {
 
 export function ExerciseWorkspace({ userId, dayId, exercise, progress }: ExerciseWorkspaceProps) {
   const supabase = useMemo(() => createClient(), []);
-  const starterCode = exercise.starter_code ?? "";
-  const [code, setCode] = useState(progress?.code ?? starterCode);
+  const starterCode = normalizeCode(exercise.starter_code);
+  const [code, setCode] = useState(normalizeCode(progress?.code) || starterCode);
   const [output, setOutput] = useState(progress?.output ?? "");
   const [message, setMessage] = useState("");
   const [isRunning, setIsRunning] = useState(false);

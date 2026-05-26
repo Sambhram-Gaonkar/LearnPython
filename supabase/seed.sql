@@ -45,7 +45,7 @@ join (
   values
   (1,'Print Your Name','Write a Python program to print your name using the print() function.','print("")','Your name should be displayed in the output panel.','Easy',array['Put your name inside quotes.','Use print("Your Name").']),
   (1,'Two Line Greeting','Print Hello on one line and Python learner on the next line.','print("Hello")','Two separate lines should appear.','Easy',array['Use two print() statements.','Each print() creates a new line.']),
-  (1,'Comment and Print','Add a comment above a print statement that prints I am learning Python.','# write a comment here','I am learning Python','Easy',array['Python comments start with #.','Comments do not appear in output.']),
+  (1,'Comment and Print','Add a short Python comment above the print statement. The program should print I am learning Python.','print("I am learning Python")','I am learning Python','Easy',array['Add a new line above the print statement.','Start the comment with #.','The print statement should stay in the program so output appears.']),
   (2,'Create Variables','Create name and age variables, then print them.','name = ""\nage = 0\nprint(name)\nprint(age)','The name and age should print on separate lines.','Easy',array['Use quotes for text.','Numbers do not need quotes.']),
   (2,'Type Check','Create three variables and print their types.','city = "Delhi"\ntemperature = 28.5\nis_sunny = True\n','The output should include str, float, and bool types.','Easy',array['Use type(value).','Print each type.']),
   (2,'Update Score','Start score at 10, add 5, and print the final score.','score = 10\n# update score here\nprint(score)','15','Easy',array['Use score = score + 5.','The same variable can be reassigned.']),
