@@ -40,7 +40,7 @@ Create `.env.local`:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SPECIAL_USER_EMAIL=target_user_email@example.com
+SPECIAL_USER_EMAIL=nayakshivani2003@gmail.com
 SPECIAL_WELCOME_IMAGE=/special/welcome.png
 SPECIAL_CERTIFICATE_IMAGE=/special/certificate.png
 SPECIAL_CHATBOT_MESSAGES=Thale nindh|Moka Taka Hog Haaa..|Kapada Shili
