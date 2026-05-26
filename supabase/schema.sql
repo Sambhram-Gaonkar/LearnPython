@@ -81,6 +81,12 @@ alter table public.roadmap_days enable row level security;
 alter table public.exercises enable row level security;
 alter table public.user_progress enable row level security;
 
+grant usage on schema public to authenticated;
+grant select on public.roadmap_days to authenticated;
+grant select on public.exercises to authenticated;
+grant select, insert, update on public.user_progress to authenticated;
+grant select, update on public.profiles to authenticated;
+
 drop policy if exists "Profiles are readable by owner" on public.profiles;
 create policy "Profiles are readable by owner"
 on public.profiles for select
