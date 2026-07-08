@@ -14,6 +14,7 @@
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.49.1",
     "@uiw/react-codemirror": "^4.23.10",
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "next": "latest",
